@@ -1,12 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-
-class College(models.Model):
-    name = models.CharField(max_length=50, null=True)
-    code = models.IntegerField(null=False, unique=True, primary_key=True)
-
-
 class User(AbstractUser):
     username = models.CharField(max_length=100, unique=True, null=True)
     first_name = models.CharField(max_length=80)
@@ -14,7 +8,7 @@ class User(AbstractUser):
     email = models.EmailField(null=True, unique=True)
     phone = models.CharField(max_length=10, null=True, blank=True)
     gh_username = models.CharField(max_length=100, unique=True)
-    college = models.ForeignKey(College, on_delete=models.CASCADE)
+    college = models.CharField(max_length=100)
     year = models.CharField(max_length= 15, default="Year")
     dept = models.CharField(max_length=20, default="Department" )
     activated = models.BooleanField(default=False)
@@ -29,7 +23,6 @@ class User(AbstractUser):
 DOMAINS = (
      ('Sustainibility', 'Sustainibility'),
      ('Intelligent Automation', 'Intelligent Automation')
-
 )
 class Team(models.Model):
     name = models.CharField(max_length=500, null=True)

@@ -9,7 +9,6 @@ class TeamAdmin(admin.ModelAdmin):
     
 
 admin.site.register(models.User)
-admin.site.register(models.College)
 admin.site.register(models.Team)
 
 
