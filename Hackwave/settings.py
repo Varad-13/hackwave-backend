@@ -36,6 +36,8 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -66,9 +68,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'allauth.account.middleware.AccountMiddleware',
+
 ]
 
-ROOT_URLCONF = 'EMS.urls'
+ROOT_URLCONF = 'Hackwave.urls'
 
 TEMPLATES = [
     {
@@ -86,7 +91,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'EMS.wsgi.application'
+WSGI_APPLICATION = 'Hackwave.wsgi.application'
 
 
 # Database
@@ -107,12 +112,12 @@ SOCIALACCOUNT_LOGIN_ON_GET=True
 
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
