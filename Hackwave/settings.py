@@ -27,6 +27,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
+SITE_ID = 2
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+
 
 # Application definition
 
@@ -42,6 +50,12 @@ INSTALLED_APPS = [
 
      #user apps
     'core.apps.CoreConfig',
+
+    #github oauth
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -78,6 +92,18 @@ WSGI_APPLICATION = 'EMS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+AUTH_USER_MODEL = 'core.User'
+ACCOUNT_USER_MODEL = 'core.User'
+LOGOUT_REDIRECT_URL = '/'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+
+    'allauth.account.auth_backends.AuthenticationBackend'
+    ]
+
+
+SOCIALACCOUNT_LOGIN_ON_GET=True
 
 
 
